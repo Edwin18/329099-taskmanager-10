@@ -2,6 +2,9 @@
 
 const CARD_COUNT = 3;
 
+const mainElement = document.querySelector(`main`);
+const mainControlElement = mainElement.querySelector(`.main__control`);
+
 const getMenuElement = () => {
   return `
     <section class="control__btn-wrap">
@@ -422,9 +425,6 @@ const getLoadMoreBtnElement = () => {
     <button class="load-more" type="button">load more</button>
   `;
 };
-
-const mainElement = document.querySelector(`main`);
-const mainControlElement = mainElement.querySelector(`.main__control`);
 
 const renderElement = (element, parent, position = `beforeend`) => {
   parent.insertAdjacentHTML(position, element);
