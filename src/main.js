@@ -5,9 +5,8 @@ const CARD_COUNT = 3;
 const mainElement = document.querySelector(`main`);
 const mainControlElement = mainElement.querySelector(`.main__control`);
 
-const getMenuElement = () => {
-  return `
-    <section class="control__btn-wrap">
+const getMenuElement = () => (
+  `<section class="control__btn-wrap">
       <input
         type="radio"
         name="control"
@@ -34,13 +33,11 @@ const getMenuElement = () => {
       <label for="control__statistic" class="control__label"
         >STATISTICS</label
       >
-    </section>
-  `;
-};
+    </section>`
+);
 
-const getMainFilterElement = () => {
-  return `
-    <section class="main__filter filter container">
+const getMainFilterElement = () => (
+  `<section class="main__filter filter container">
       <input
         type="radio"
         id="filter__all"
@@ -110,35 +107,27 @@ const getMainFilterElement = () => {
       <label for="filter__archive" class="filter__label"
         >Archive <span class="filter__archive-count">115</span></label
       >
-    </section>
-  `;
-};
+    </section>`
+);
 
-const getBoardContainerElement = () => {
-  return `
-  <section class="board container"></section>
-  `;
-};
+const getBoardContainerElement = () => (
+  `<section class="board container"></section>`
+);
 
-const getBoardFilterElement = () => {
-  return `
-    <div class="board__filter-list">
+const getBoardFilterElement = () => (
+  `<div class="board__filter-list">
       <a href="#" class="board__filter">SORT BY DEFAULT</a>
       <a href="#" class="board__filter">SORT BY DATE up</a>
       <a href="#" class="board__filter">SORT BY DATE down</a>
-    </div>
-  `;
-};
+  </div>`
+);
 
-const getBoardTasksElement = () => {
-  return `
-    <div class="board__tasks"></div>
-  `;
-};
+const getBoardTasksElement = () => (
+  `<div class="board__tasks"></div>`
+);
 
-const getCardElement = () => {
-  return `
-    <article class="card card--black">
+const getCardElement = () => (
+  `<article class="card card--black">
       <div class="card__form">
         <div class="card__inner">
           <div class="card__control">
@@ -202,13 +191,11 @@ const getCardElement = () => {
           </div>
         </div>
       </div>
-    </article>
-  `;
-};
+    </article>`
+);
 
-const getEditCardElement = () => {
-  return `
-    <article class="card card--edit card--black">
+const getEditCardElement = () => (
+  `<article class="card card--edit card--black">
       <form class="card__form" method="get">
         <div class="card__inner">
           <div class="card__color-bar">
@@ -416,15 +403,12 @@ const getEditCardElement = () => {
           </div>
         </div>
       </form>
-    </article>
-  `;
-};
+    </article>`
+);
 
-const getLoadMoreBtnElement = () => {
-  return `
-    <button class="load-more" type="button">load more</button>
-  `;
-};
+const getLoadMoreBtnElement = () => (
+  `<button class="load-more" type="button">load more</button>`
+);
 
 const renderElement = (element, parent, position = `beforeend`) => {
   parent.insertAdjacentHTML(position, element);
@@ -442,8 +426,12 @@ renderElement(getLoadMoreBtnElement(), boardContainerElement);
 
 const boardTasksElement = mainElement.querySelector(`.board__tasks`);
 
-for (let i = 0; i < CARD_COUNT; i++) {
-  renderElement(getCardElement(), boardTasksElement);
-}
+const renderTasks = () => {
+  for (let i = 0; i < CARD_COUNT; i++) {
+    renderElement(getCardElement(), boardTasksElement);
+  }
+};
+
+renderTasks();
 renderElement(getEditCardElement(), boardTasksElement, `afterbegin`);
 
